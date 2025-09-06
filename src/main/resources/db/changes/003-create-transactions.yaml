@@ -1,0 +1,41 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003
+      author: amirkhan
+      changes:
+        - createTable:
+            tableName: transactions
+            columns:
+              - column:
+                  name: id
+                  type: BIGSERIAL
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: type
+                  type: VARCHAR(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: NUMERIC(19,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: from_card_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_transaction_from_card
+                    references: cards(id)
+              - column:
+                  name: to_card_id
+                  type: BIGINT
+                  constraints:
+                    foreignKeyName: fk_transaction_to_card
+                    references: cards(id)
+              - column:
+                  name: timestamp
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false

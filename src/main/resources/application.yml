@@ -1,0 +1,50 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: bank-card-system
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/BankRest
+    username: bankuser
+    password: bankpass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  liquibase:
+    change-log: classpath:/db/db.changelog-master.yaml
+    enabled: true
+
+jwt:
+  secret: U2VjdXJlS2V5Rm9yQmFuay1DbGFzc0FwcC0yMDI1LURldmVsb3BlZA==
+  expiration: 3600000 # 1 hour
+
+logging:
+  level:
+    com.bank: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    url: /api-docs
+
+app:
+  encryption:
+    password: my-super-secret-encryption-key
+    salt: my-fixed-salt-value

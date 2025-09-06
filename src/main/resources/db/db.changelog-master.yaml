@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - include:
+      file: db/changes/001-create-users.yaml
+  - include:
+      file: db/changes/002-create-cards.yaml
+  - include:
+      file: db/changes/003-create-transactions.yaml
+  - include:
+      file: db/changes/004-insert-test-users.yaml
